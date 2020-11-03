@@ -1,0 +1,8 @@
+----- Nota Fiscal ------
+Id da Venda: 4
+Produto: Xerox
+Valor: R$0.5
+Nome: Cliente
+Data: 03/11/2020 19:44:46
+------------------------- 
+
