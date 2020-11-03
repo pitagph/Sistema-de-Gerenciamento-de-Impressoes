@@ -10,6 +10,8 @@ Dentro da pasta caixa ela tem que ficar no disco  C: para a aplicação funciona
 
 ![](https://github.com/pitagph/Sistema-de-Gerenciamento-de-Impressoes/blob/main/dist/tela.jpg?raw=true)
 
+![](https://github.com/pitagph/Sistema-de-Gerenciamento-de-Impressoes/blob/main/dist/Historicodevenda.jpg?raw=true)
+
 ========================
 BUILD OUTPUT DESCRIPTION
 ========================
