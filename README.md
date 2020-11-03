@@ -7,6 +7,9 @@ entrada_caixa_impressao.txt
 NotaFiscal_Cliente.txt
 Dentro da pasta caixa ela tem que ficar no disco  C: para a aplicação funcionar, adicione valor 0 no arquivo_id_venda.txt e 0 no arquvio entrada_caixa_impressao.txt
 
+
+![](https://github.com/pitagph/Sistema-de-Gerenciamento-de-Impressoes/blob/main/dist/tela.jpg?raw=true)
+
 ========================
 BUILD OUTPUT DESCRIPTION
 ========================
