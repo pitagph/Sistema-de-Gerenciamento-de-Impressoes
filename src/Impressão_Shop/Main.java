@@ -117,7 +117,7 @@ public class Main extends Serviços{
            escrever_caixa.close();
          }
   
- void imprimir_nota_Cliente(int id, String servico, double valor_venda) throws IOException {
+ void imprimir_nota_Cliente(int id, String servico, double valor_venda, int qnt_servicos) throws IOException {
  File dir = new File("C:\\caixa");
  File notafiscal_arquivo_cliente = new File(dir, "NotaFiscal_Cliente.txt");
  FileWriter arquivo_ler = new FileWriter(notafiscal_arquivo_cliente, false);
@@ -126,7 +126,8 @@ public class Main extends Serviços{
        escrever_txt.println("----- Nota Fiscal ------");
        escrever_txt.println("Id da Venda: "+ id);
        escrever_txt.println("Produto: "+ servico);
-       escrever_txt.println("Valor: R$"+ valor_venda);
+       escrever_txt.println("Quantidade de Serviço: "+ qnt_servicos);
+       escrever_txt.println("Valor Total: R$"+ valor_venda);
        escrever_txt.println("Nome: "+ getCliente());
        escrever_txt.println("Data: "+ getDateTime());
        escrever_txt.println("------------------------- \n");
@@ -135,7 +136,7 @@ public class Main extends Serviços{
  
  }
     
- void imprimir_nota(String servico, double valor_venda) throws IOException{
+ void imprimir_nota(String servico, double valor_venda, int qnt_servicos) throws IOException{
      int token = getId()+1;
  File dir = new File("C:\\caixa");
  File notafiscal_arquivo = new File(dir, "Caixa_impressão_historico.txt");
@@ -148,7 +149,8 @@ public class Main extends Serviços{
        escrever_txt.println("----- Nota Fiscal ------");
        escrever_txt.println("Id da Venda: "+ token);
        escrever_txt.println("Produto: "+ servico);
-       escrever_txt.println("Valor: R$"+ valor_venda);
+       escrever_txt.println("Quantidade de Serviço: "+ qnt_servicos);
+       escrever_txt.println("Valor Total: R$"+ valor_venda);
        escrever_txt.println("Nome: "+ getCliente());
        escrever_txt.println("Data: "+ getDateTime());
        escrever_txt.println("------------------------- \n");
@@ -156,7 +158,7 @@ public class Main extends Serviços{
        escrever_txt.close();
        entrada_caixa(valor_venda);
        gravar_id_venda(token);
-       imprimir_nota_Cliente(token, servico, valor_venda);
+       imprimir_nota_Cliente(token, servico, valor_venda, qnt_servicos);
  }
     
     void Caixa(String servico, double valor_venda) throws IOException{
@@ -164,17 +166,17 @@ public class Main extends Serviços{
          int quantidade_impressão_int = 0;
    Scanner trade = new Scanner(System.in);
    Scanner Quantidade_impressão = new Scanner(System.in);
-   System.out.println("Digite quantas Impressões serão: ");
+   System.out.println("Digite quantas "+ servico + " serão: ");
    quantidade_impressão_int = Quantidade_impressão.nextInt();
-   System.out.println("Você escolheu o Serviço de "+ servico);
-   System.out.println("Serão "+ quantidade_impressão_int + " Impressões.");
+   //  System.out.println("Você escolheu o Serviço de "+ servico);
+   System.out.println("Serão "+ quantidade_impressão_int +" "+ servico+"'s.");
    double valor_total = valor_venda * quantidade_impressão_int;    
-   System.out.println("\n Valor:"+ valor_total);
+   System.out.println("\n Valor Total: "+ valor_total);
        System.out.println("\n\t Confirma a Venda? Sim = 1 Não = 2");
        int entrada = trade.nextInt();
        if (entrada == 1) { 
            System.out.println("Venda Efetuada com Sucesso!");    
-           imprimir_nota(servico, valor_total);
+           imprimir_nota(servico, valor_total, quantidade_impressão_int);
            m.Maquina(); 
        } else if (entrada == 2){
            System.out.println("Venda Cancelada.");
@@ -201,6 +203,14 @@ public class Main extends Serviços{
         setPreço_Cartão_de_Visita(3.00);
         Cartao_Visita();
         Caixa(Cartao_Visita, getPreço_Cartão_de_Visita());
+    } else if (Codigo_serviço == 5){
+        setPreço_Impressao_Foto(2.50);
+        Impressao_Foto();
+        Caixa(Impressao_foto, getPreço_Impressao_Foto());
+    } else if (Codigo_serviço == 6){
+        setPreço_Scanner(2.00);
+        Scanner();
+        Caixa(Scanner, getPreço_Scanner());
     }
     
     }
@@ -215,17 +225,21 @@ public class Main extends Serviços{
         System.out.println("Dinheiro em caixa: "+"R$"+ getDinheiro_caixa());
         System.out.println("Bem vindo ao Sistema de Serviços \n");
         System.out.println("Selecione qual Serviço de Impressão você deseja:\n");
-        System.out.println("Selecione 1: Serviço de Impressão (1 Folha) : R%1.50");
+        System.out.println("Selecione 1: Serviço de Impressão (1 Folha) : R$1.50");
         System.out.println("Selecione 2: Serviço de Xerox (1 Folha) : R$0.50");
         System.out.println("Selecione 3: Serviço de Curriculun (1 Folha) : R$5.00");
         System.out.println("Selecione 4: Serviço de Cartão de Visita (1 Folha) : R$3.00");
-        System.out.println("Selecione Qualquer número alem do 4: Sair do Programa");
+        System.out.println("Selecione 5: Serviço de Impressão de Foto(1 Folha) : R$2.50");
+        System.out.println("Selecione 6: Serviço de Scanner (1 Folha): R$2.00");
+        System.out.println("Selecione Qualquer número alem do 6: Sair do Programa");
         entrada = ler.nextInt();
         switch (entrada) {
             case 1: Fazer_servico(entrada);break; 
             case 2: Fazer_servico(entrada);break;
             case 3: Fazer_servico(entrada);break;
-            case 4: Fazer_servico(entrada); break;
+            case 4: Fazer_servico(entrada);break;
+            case 5: Fazer_servico(entrada);break;
+            case 6: Fazer_servico(entrada);break;
             default: System.out.println("Programa Finalizado");
         }
     

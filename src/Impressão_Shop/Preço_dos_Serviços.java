@@ -15,19 +15,45 @@ public class Preço_dos_Serviços extends Usuario{
    private double Preço_Curriculum;
    private double Preço_Cartão_de_Visita;
    private double dinheiro_caixa;
+   private double Preço_Scanner;
+   private double Preço_Impressao_Foto;
    private Usuario user;
 
     public Preço_dos_Serviços() {
     }
 
-    public Preço_dos_Serviços(double Preco_Xerox, double Preco_Impressão, double Preço_Curriculum, double Preço_Cartão_de_Serviço, double dinheiro_caixa ,Usuario user) {
+    public Preço_dos_Serviços(double Preco_Xerox, double Preco_Impressão, double Preço_Curriculum,
+        double Preço_Cartão_de_Serviço, double dinheiro_caixa, double Preço_Scanner, double Preço_Impressao_Foto,Usuario user) {
         this.Preco_Xerox = Preco_Xerox;
         this.Preco_Impressão = Preco_Impressão;
         this.Preço_Curriculum = Preço_Curriculum;
         this.Preço_Cartão_de_Visita = Preço_Cartão_de_Visita;
         this.dinheiro_caixa = dinheiro_caixa;
+        this.Preço_Scanner = Preço_Scanner;
+        this.Preço_Impressao_Foto = Preço_Impressao_Foto;
         this.user = user;
     }
+
+    public void setPreço_Impressao_Foto(double Preço_Impressao_Foto) {
+        this.Preço_Impressao_Foto = Preço_Impressao_Foto;
+    }
+
+    public double getPreço_Impressao_Foto() {
+        return Preço_Impressao_Foto;
+    }
+    
+    
+
+    public void setPreço_Scanner(double Preço_Scanner) {
+        this.Preço_Scanner = Preço_Scanner;
+    }
+
+    public double getPreço_Scanner() {
+        return Preço_Scanner;
+    }
+    
+    
+    
 
     public void setCliente(String Cliente) {
         this.Cliente = Cliente;

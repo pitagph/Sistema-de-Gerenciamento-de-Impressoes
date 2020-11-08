@@ -22,6 +22,8 @@ public class Serviços extends Preço_dos_Serviços{
     public static final String Curriculun = "Curriculun";
     public static final String Cartao_Visita = "Cartão de Visita";
     public static final String User = "Cliente";
+    public static final String Scanner = "Scanner";
+    public static final String Impressao_foto = "Impressão Foto";
     
     
    public String getDateTime() { 
@@ -29,6 +31,18 @@ public class Serviços extends Preço_dos_Serviços{
 	Date date = new Date(); 
 	return dateFormat.format(date); 
 }
+   
+   void Scanner(){
+        System.out.println(Scanner);
+        System.out.println(getPreço_Scanner());
+        setCliente(User);
+   }
+   
+   void Impressao_Foto(){
+       System.out.println(Impressao_foto);
+       System.out.println(getPreço_Impressao_Foto());
+       setCliente(User);
+   }
     
    void Impressao(){
          System.out.println(Nome_impressao);
